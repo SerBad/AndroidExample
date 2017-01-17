@@ -28,12 +28,12 @@ public class MVPModelImpl implements MVPModel {
         api.getBeauty(num, page).enqueue(new Callback<BeautyResults>() {
             @Override
             public void onResponse(Call<BeautyResults> call, Response<BeautyResults> response) {
-                callback.onResponse(call, response);
+                callback.onResponse(response);
             }
 
             @Override
             public void onFailure(Call<BeautyResults> call, Throwable t) {
-                callback.onFailure(call, t);
+                callback.onFailure(t);
             }
         });
     }

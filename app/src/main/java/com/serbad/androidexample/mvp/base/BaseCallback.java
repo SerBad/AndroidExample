@@ -8,7 +8,7 @@ import retrofit2.Response;
  * Created by zhoutingjie on 2016/12/12.
  */
 public interface BaseCallback<T> {
-    void onResponse(Call<T> call, Response<T> response);
+    void onResponse(Response<T> response);
 
-    void onFailure(Call<T> call, Throwable t);
+    void onFailure(Throwable t);
 }

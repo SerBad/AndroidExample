@@ -10,12 +10,15 @@ import com.serbad.androidexample.R;
 import com.serbad.androidexample.common.adapter.RecyclerViewAdapter;
 import com.serbad.androidexample.common.results.Beauty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MVPActivity extends Activity implements MVPView {
     private Context context;
     private RecyclerView recycler_view;
     private MVPPresenter presenter;
+    private List<Beauty> list = new ArrayList<>();
+    private RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +33,17 @@ public class MVPActivity extends Activity implements MVPView {
     private void initView() {
         recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
         recycler_view.setLayoutManager(new LinearLayoutManager(context));
-        presenter = new MVPPresenterImpl(context,this);
+        presenter = new MVPPresenterImpl(context, this);
         presenter.onStart();
-
+        adapter = new RecyclerViewAdapter(context, list);
+        recycler_view.setAdapter(adapter);
     }
 
 
     @Override
     public void setAdapter(List<Beauty> list) {
-        recycler_view.setAdapter(new RecyclerViewAdapter(context, list));
-
+        this.list=list;
+        adapter.notifyDataSetChanged();
     }
 
     @Override

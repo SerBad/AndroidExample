@@ -10,7 +10,6 @@ import com.serbad.androidexample.mvp.base.BaseCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
 import retrofit2.Response;
 
 /**
@@ -34,15 +33,16 @@ public class MVPPresenterImpl implements MVPPresenter {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                model.loadData(10, 1, new BaseCallback() {
+                model.loadData(10, 1, new BaseCallback<BeautyResults>() {
+
                     @Override
-                    public void onResponse(Call call, Response response) {
-                        list = ((BeautyResults) response.body()).results;
+                    public void onResponse(Response<BeautyResults> response) {
+                        list = response.body().results;
                         view.setAdapter(list);
                     }
 
                     @Override
-                    public void onFailure(Call call, Throwable t) {
+                    public void onFailure(Throwable t) {
 
                     }
                 });
