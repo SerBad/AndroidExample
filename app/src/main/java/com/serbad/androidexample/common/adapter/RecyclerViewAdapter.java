@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.serbad.androidexample.R;
 import com.serbad.androidexample.common.results.Beauty;
 import com.serbad.androidexample.common.views.PicassoRoundTransform;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -50,9 +52,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView image_view;
 
+
         public ViewHolder(View view) {
             super(view);
             image_view = (ImageView) view.findViewById(R.id.image_view);
+
         }
     }
 }

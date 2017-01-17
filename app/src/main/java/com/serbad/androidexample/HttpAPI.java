@@ -1,6 +1,11 @@
 package com.serbad.androidexample;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.serbad.androidexample.common.results.BeautyResults;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,10 +24,16 @@ public class HttpAPI {
     private Retrofit retrofit;
 
     public HttpAPI() {
+        GsonBuilder gsonBuilder=new GsonBuilder();
+        gsonBuilder.setPrettyPrinting(); //格式化json
+        gsonBuilder.serializeNulls();
+        gsonBuilder.setDateFormat(SimpleDateFormat.FULL);
+        Gson gson=gsonBuilder.create();
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }
 

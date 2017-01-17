@@ -1,6 +1,7 @@
 package com.serbad.androidexample.common.results;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by zhoutingjie on 2016/12/12.
@@ -8,9 +9,9 @@ import java.io.Serializable;
 
 public class Beauty implements Serializable {
     public String id;
-    public String createdat;
+    public Date createdAt;
     public String desc;
-    public String publishedat;
+    public Date publishedAt;
     public String source;
     public String type;
     public String url;
