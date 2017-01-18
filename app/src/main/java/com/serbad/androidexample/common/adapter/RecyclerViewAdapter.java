@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.serbad.androidexample.R;
 import com.serbad.androidexample.common.results.Beauty;
 import com.serbad.androidexample.common.views.PicassoRoundTransform;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
@@ -40,7 +42,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Picasso.with(context)
                 .load(Uri.parse(list.get(position).url))
-                .transform(new PicassoRoundTransform())
+                .networkPolicy(NetworkPolicy.OFFLINE)
+
                 .into(viewHolder.image_view);
     }
 
