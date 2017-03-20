@@ -3,8 +3,8 @@ package com.serbad.androidexample.mvp;
 import android.content.Context;
 import android.os.Handler;
 
+import com.serbad.androidexample.common.results.BaseResult;
 import com.serbad.androidexample.common.results.Beauty;
-import com.serbad.androidexample.common.results.BeautyResults;
 import com.serbad.androidexample.mvp.base.BaseCallback;
 
 import java.util.ArrayList;
@@ -33,11 +33,11 @@ public class MVPPresenterImpl implements MVPPresenter {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                model.loadData(10, 1, new BaseCallback<BeautyResults>() {
+                model.loadData(10, 1, new BaseCallback<BaseResult<Beauty>>() {
 
                     @Override
-                    public void onResponse(Response<BeautyResults> response) {
-                        list = response.body().results;
+                    public void onResponse(Response<BaseResult<Beauty>> response) {
+                        list.addAll(response.body().getResults());
                         view.setAdapter(list);
                     }
 

@@ -3,7 +3,8 @@ package com.serbad.androidexample.mvp;
 import android.content.Context;
 
 import com.serbad.androidexample.HttpAPI;
-import com.serbad.androidexample.common.results.BeautyResults;
+import com.serbad.androidexample.common.results.BaseResult;
+import com.serbad.androidexample.common.results.Beauty;
 import com.serbad.androidexample.common.utils.LogUtil;
 import com.serbad.androidexample.mvp.base.BaseCallback;
 
@@ -21,22 +22,27 @@ public class MVPModelImpl implements MVPModel {
 
     public MVPModelImpl(Context context) {
         this.context = context;
-        this.api=new HttpAPI().getAPI();
+        this.api = new HttpAPI().getAPI();
     }
 
     @Override
     public void loadData(int num, int page, final BaseCallback callback) {
-        api.getBeauty(num, page).enqueue(new Callback<BeautyResults>() {
+        api.getBeauty(num, page).enqueue(new Callback<BaseResult<Beauty>>() {
             @Override
-            public void onResponse(Call<BeautyResults> call, Response<BeautyResults> response) {
+            public void onResponse(Call<BaseResult<Beauty>> call, Response<BaseResult<Beauty>> response) {
+                response.body().getResults().get(0);
+
+                LogUtil.i(response.body().getResults().get(0).getUrl());
                 callback.onResponse(response);
+
             }
 
             @Override
-            public void onFailure(Call<BeautyResults> call, Throwable t) {
-                LogUtil.i(t+"");
+            public void onFailure(Call<BaseResult<Beauty>> call, Throwable t) {
+                LogUtil.i(t + "");
                 callback.onFailure(t);
             }
         });
+
     }
 }

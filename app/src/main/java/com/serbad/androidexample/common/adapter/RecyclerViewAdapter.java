@@ -7,16 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.serbad.androidexample.R;
 import com.serbad.androidexample.common.results.Beauty;
-import com.serbad.androidexample.common.views.PicassoRoundTransform;
-import com.squareup.picasso.MemoryPolicy;
+import com.serbad.androidexample.common.utils.LogUtil;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -40,10 +37,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        Picasso.with(context)
-                .load(Uri.parse(list.get(position).url))
-                .networkPolicy(NetworkPolicy.OFFLINE)
 
+        String url =  list.get(0).getUrl();
+        Picasso.with(context)
+                .load(Uri.parse(list.get(position).getUrl()))
+                .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(viewHolder.image_view);
     }
 

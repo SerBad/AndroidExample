@@ -23,9 +23,13 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile('com.squareup.retrofit2:converter-gson:2.1.0', {
+        //去除这个包里面引用的gson
+        exclude group: 'com.google.code.gson'
+    })
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:recyclerview-v7:23.0.0'
     compile 'com.android.support:cardview-v7:23.0.0'
+    compile 'com.google.code.gson:gson:2.8.0'
 }
