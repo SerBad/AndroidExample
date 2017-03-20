@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.serbad.androidexample.HttpAPI;
 import com.serbad.androidexample.common.results.BeautyResults;
+import com.serbad.androidexample.common.utils.LogUtil;
 import com.serbad.androidexample.mvp.base.BaseCallback;
 
 import retrofit2.Call;
@@ -33,6 +34,7 @@ public class MVPModelImpl implements MVPModel {
 
             @Override
             public void onFailure(Call<BeautyResults> call, Throwable t) {
+                LogUtil.i(t+"");
                 callback.onFailure(t);
             }
         });

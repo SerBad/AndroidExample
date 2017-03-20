@@ -2,6 +2,7 @@ package com.serbad.androidexample;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.serbad.androidexample.common.StringConverterFactory;
 import com.serbad.androidexample.common.results.BeautyResults;
 
 import java.text.DateFormat;
@@ -33,6 +34,7 @@ public class HttpAPI {
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build())
+                .addConverterFactory(StringConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }
