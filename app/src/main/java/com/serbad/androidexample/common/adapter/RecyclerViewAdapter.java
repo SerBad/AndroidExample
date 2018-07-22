@@ -41,7 +41,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String url =  list.get(0).getUrl();
         Picasso.with(context)
                 .load(Uri.parse(list.get(position).getUrl()))
-                .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(viewHolder.image_view);
     }
 

@@ -32,11 +32,12 @@ public class MVPActivity extends Activity implements MVPView {
         recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
 
         recycler_view.setLayoutManager(new LinearLayoutManager(context));
+        adapter = new RecyclerViewAdapter(context, list);
+        recycler_view.setAdapter(adapter);
 
         presenter = new MVPPresenterImpl(context, this);
         presenter.onStart();
-        adapter = new RecyclerViewAdapter(context, list);
-        recycler_view.setAdapter(adapter);
+
     }
 
 

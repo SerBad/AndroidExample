@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.0'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.serbad.androidexample"
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -21,15 +21,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile('com.squareup.retrofit2:converter-gson:2.1.0', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation('com.squareup.retrofit2:converter-gson:2.1.0', {
         //去除这个包里面引用的gson
         exclude group: 'com.google.code.gson'
     })
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.android.support:recyclerview-v7:23.0.0'
-    compile 'com.android.support:cardview-v7:23.0.0'
-    compile 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.google.code.gson:gson:2.8.2'
 }
