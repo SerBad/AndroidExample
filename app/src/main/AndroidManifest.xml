@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvp.MVPActivity" />
-        <activity android:name=".touchevent.TouchEventActivity"></activity>
+        <activity android:name=".touchevent.TouchEventActivity" />
+        <activity android:name=".video.VideoActivity" />
     </application>
 
 </manifest>

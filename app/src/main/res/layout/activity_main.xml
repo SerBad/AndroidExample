@@ -15,5 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="touchEvent示例"/>
+
+    <Button
+        android:id="@+id/video_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="视频播放示例" />
 </LinearLayout>
 
