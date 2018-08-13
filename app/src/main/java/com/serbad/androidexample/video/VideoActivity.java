@@ -1,11 +1,7 @@
 package com.serbad.androidexample.video;
 
 import android.app.Activity;
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.widget.VideoView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,11 +16,13 @@ import java.util.List;
 
 public class VideoActivity extends Activity {
     private List<Data> list = new ArrayList<>();
-    private VideoView videoView;
+    MyStandardGSYVideoPlayer videoPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_video);
         list = getAssetsFile();
 
@@ -34,16 +32,17 @@ public class VideoActivity extends Activity {
     }
 
     private void initView() {
-        videoView = findViewById(R.id.video_view);
-        videoView.setVideoURI(Uri.parse(list.get(2).videoUrl));
-        videoView.start();
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mPlayer) {
-                mPlayer.start();
-                mPlayer.setLooping(true);
-            }
-        });
+        videoPlayer = findViewById(R.id.video_view);
+
+        Data data = list.get(2);
+
+        videoPlayer.toPlay(data.videoUrl, true);
+        videoPlayer.setThumb(data.animateUrl, data.width, data.height);
+        videoPlayer.setThumbAspectRatio((float) data.width / (float) data.height);
+
+//        videoPlayer.clearCurrentCache();
+//        videoPlayer.startPlayLogic();
+//        videoPlayer.setVideoAllCallBack(new  );
     }
 
 

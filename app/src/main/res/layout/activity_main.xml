@@ -21,5 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="视频播放示例" />
+
+
+    <Button
+        android:id="@+id/fresco_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="fresco示例" />
+
 </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.serbad.androidexample.fresco.FrescoActivity;
 import com.serbad.androidexample.mvp.MVPActivity;
 import com.serbad.androidexample.touchevent.TouchEventActivity;
 import com.serbad.androidexample.video.VideoActivity;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.mvp_button).setOnClickListener(this);
         findViewById(R.id.touch_button).setOnClickListener(this);
         findViewById(R.id.video_button).setOnClickListener(this);
+        findViewById(R.id.fresco_button).setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +41,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.video_button:
                 startActivity(new Intent(MainActivity.this, VideoActivity.class));
+                break;
+            case R.id.fresco_button:
+                startActivity(new Intent(MainActivity.this, FrescoActivity.class));
                 break;
         }
 
