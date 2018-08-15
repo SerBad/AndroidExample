@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.serbad.androidexample.video.DynamicRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/black">
 
     <RelativeLayout
         android:id="@+id/surface_container"
 
         android:gravity="center"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/thumb"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/thumb_view"
@@ -39,12 +30,10 @@
 
     <com.serbad.androidexample.video.VideoLoadingView
         android:id="@+id/loading_horizon"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginBottom="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_alignParentBottom="true"/>
 
     <!--<ProgressBar-->
     <!--android:id="@+id/loading"-->
@@ -65,4 +54,4 @@
         android:src="@drawable/jc_click_play_selector"
         android:visibility="gone" />
 
-</android.support.constraint.ConstraintLayout>
+</com.serbad.androidexample.video.DynamicRelativeLayout>

@@ -111,8 +111,6 @@ public class VideoLoadingView extends View {
                         clearAnimation();
                         startAnimation(animation);
                     }
-
-                    Log.i("xx", "progressLeft: " + progressLeft + "progressRight:" + progressRight);
                 }
             };
         animation.setDuration(800);
@@ -127,6 +125,7 @@ public class VideoLoadingView extends View {
 //        }
         if (progressPaint != null) {
             canvas.drawRect(progressRectF, progressPaint);
+
         }
 //        Log.e("VideoLoadingView","alpha:"+alpha+"  progressLeft:"+progressLeft+"  progressRight:"+progressRight);
         this.setAlpha(alpha);

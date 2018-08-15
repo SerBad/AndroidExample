@@ -37,14 +37,19 @@ dependencies {
     implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
 
-    implementation 'com.shuyu:GSYVideoPlayer:5.0.2', {
+    implementation 'com.shuyu:gsyVideoPlayer-java:5.0.2', {
         exclude group: 'com.android.support'
         exclude group: 'tv.danmaku.ijk.media'
         exclude group: 'com.google.android.exoplayer'
+        exclude module: 'gsyvideoplayer-androidvideocache'
     }
-//    implementation 'com.shuyu:gsyVideoPlayer-armv7a:5.0.2'
+    implementation 'com.shuyu:gsyVideoPlayer-armv7a:5.0.2'
+    implementation 'com.shuyu:gsyVideoPlayer-arm64:5.0.2'
+
     implementation 'com.facebook.fresco:fresco:1.8.0'
     implementation 'com.facebook.fresco:animated-webp:1.8.0'
     implementation 'com.facebook.fresco:animated-gif:1.8.0'
+
+    implementation 'com.danikula:videocache:2.7.1'
 
 }

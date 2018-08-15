@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -144,7 +143,6 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
         //置空滑动事件的处理方法
     }
 
-
     @Override
     protected void touchDoubleUp() {
         //重写该方法是为了去掉双击事件的处理
@@ -161,4 +159,21 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
             mCurrentState = CURRENT_STATE_PAUSE;
         }
     }
+
+//      videoplayer.setShowPlayJustClick(true);
+//        videoplayer.setAspect(C.VERTICAL_ASPECT);
+
+//        jcVideoPlayer.setShowPlayJustClick(true);
+//        jcVideoPlayer.setCanTouch(false);
+//        jcVideoPlayer.setUserLoadingProgressBar(false);
+//        jcVideoPlayer.setShowLoading(false);
+//
+//        jcCartoon.setShowPlayJustClick(true);
+//        jcCartoon.setCanTouch(true);
+//        jcCartoon.setUserLoadingProgressBar(false);
+//        jcCartoon.setShowLoading(false);
+
+
+//    onProgressChange 回调的方法，貌似是用来处理歌词字幕的
+
 }
