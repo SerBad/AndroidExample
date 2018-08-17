@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.serbad.androidexample.video.DynamicRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dynamic_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
     <RelativeLayout
         android:id="@+id/surface_container"
-
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -25,14 +25,13 @@
             android:layout_centerInParent="true"
             android:background="#000000" />
 
-
     </RelativeLayout>
 
     <com.serbad.androidexample.video.VideoLoadingView
         android:id="@+id/loading_horizon"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"/>
 
     <!--<ProgressBar-->
@@ -43,7 +42,6 @@
     <!--android:layout_centerVertical="true"-->
     <!--android:indeterminateDrawable="@drawable/jc_loading"-->
     <!--android:visibility="invisible" />-->
-
 
 
     <ImageView

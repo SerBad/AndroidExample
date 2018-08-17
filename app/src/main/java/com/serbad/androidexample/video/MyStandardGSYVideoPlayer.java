@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,14 +24,9 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
 
     private VideoLoadingView loadingHorizon;
     private ImageView startView;
-
-
-    public MyStandardGSYVideoPlayer(Context context, Boolean fullFlag) {
-        super(context, fullFlag);
-    }
+    private DynamicRelativeLayout dynamicLayout;
 
     public MyStandardGSYVideoPlayer(Context context) {
-
         super(context);
     }
 
@@ -40,6 +36,8 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
 
     @Override
     protected void init(Context context) {
+
+
         //默认不显示该库的滑动界面改变进度，声音
         setIsTouchWiget(false);
 
@@ -47,6 +45,7 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
 
         loadingHorizon = findViewById(R.id.loading_horizon);
         startView = findViewById(R.id.start_view);
+        dynamicLayout = findViewById(R.id.dynamic_layout);
 
         loadingHorizon.setVisibility(VISIBLE);
     }
@@ -88,8 +87,8 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
 
             ((SimpleDraweeView) mThumbImageView).setAspectRatio(aspectR);
             ViewGroup.LayoutParams layoutParams = mThumbImageView.getLayoutParams();
-            layoutParams.width = LayoutParams.MATCH_PARENT;
-            layoutParams.height = LayoutParams.WRAP_CONTENT;
+            layoutParams.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            layoutParams.height = FrameLayout.LayoutParams.WRAP_CONTENT;
             mThumbImageView.setLayoutParams(layoutParams);
         }
     }
@@ -134,8 +133,7 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
     @Override
     protected void changeUiToPlayingShow() {
         super.changeUiToPlayingShow();
-        loadingHorizon.setVisibility(VISIBLE);
-
+        loadingHorizon.setVisibility(GONE);
     }
 
     @Override
@@ -159,6 +157,41 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
             mCurrentState = CURRENT_STATE_PAUSE;
         }
     }
+
+    public void setAspect(float aspect) {
+        if (dynamicLayout != null) {
+            dynamicLayout.setAspectRatio(aspect);
+        }
+        setThumbAspectRatio(aspect);
+    }
+//
+//    public void setUp(String url) {
+//        setUp(url, true, "");
+//    }
+
+    //关于比例这一块，是可以优化掉的
+    public void setAspect(float screenAspect, float videoAspect) {
+        if (screenAspect > videoAspect && videoAspect <= 9 / 18f) {
+            int screenHeightPixels = LocalDisplay.SCREEN_HEIGHT_PIXELS;
+            int screenWidthPixels = LocalDisplay.SCREEN_WIDTH_PIXELS;
+            int realWidth = (int) (screenHeightPixels * videoAspect);
+            if (realWidth < screenWidthPixels) {
+                realWidth = screenWidthPixels;
+            }
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(realWidth, screenHeightPixels);
+            int marginWidth = (realWidth - LocalDisplay.SCREEN_WIDTH_PIXELS) / 2;
+            layoutParams.setMargins(-marginWidth, 0, -marginWidth, 0);
+            dynamicLayout.setLayoutParams(layoutParams);
+        } else {
+            dynamicLayout.setAspectRatio(videoAspect);
+            setThumbAspectRatio(videoAspect);
+        }
+    }
+
+
+
+
+
 
 //      videoplayer.setShowPlayJustClick(true);
 //        videoplayer.setAspect(C.VERTICAL_ASPECT);
