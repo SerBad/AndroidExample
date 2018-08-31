@@ -34,7 +34,7 @@ public class VideoActivity extends Activity {
     private void initView() {
         videoPlayer = findViewById(R.id.video_view);
 
-        Data data = list.get(2);
+        Data data = list.get(0);
 
         videoPlayer.toPlay(data.videoUrl, true);
         videoPlayer.setThumb(data.animateUrl, data.width, data.height);
