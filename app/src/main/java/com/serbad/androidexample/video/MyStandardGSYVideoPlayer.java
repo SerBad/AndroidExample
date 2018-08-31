@@ -25,6 +25,7 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
     private VideoLoadingView loadingHorizon;
     private ImageView startView;
     private DynamicRelativeLayout dynamicLayout;
+    private boolean showUserLoading = true;
 
     public MyStandardGSYVideoPlayer(Context context) {
         super(context);
@@ -47,7 +48,7 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
         startView = findViewById(R.id.start_view);
         dynamicLayout = findViewById(R.id.dynamic_layout);
 
-        loadingHorizon.setVisibility(VISIBLE);
+        loadingHorizon.setVisibility(showUserLoading?VISIBLE:GONE);
     }
 
     @Override
@@ -127,7 +128,7 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
     @Override
     protected void changeUiToPreparingShow() {
         super.changeUiToPreparingShow();
-        loadingHorizon.setVisibility(VISIBLE);
+        loadingHorizon.setVisibility(showUserLoading?VISIBLE:GONE);
     }
 
     @Override
@@ -164,10 +165,10 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
         }
         setThumbAspectRatio(aspect);
     }
-//
-//    public void setUp(String url) {
-//        setUp(url, true, "");
-//    }
+
+    public void setUp(String url) {
+        setUp(url, true, "");
+    }
 
     //关于比例这一块，是可以优化掉的
     public void setAspect(float screenAspect, float videoAspect) {
@@ -188,10 +189,20 @@ public class MyStandardGSYVideoPlayer extends StandardGSYVideoPlayer {
         }
     }
 
+    public int getCurrentPosition() {
+        int duration = 0;
+        try {
+            duration = (int) getGSYVideoManager().getCurrentPosition();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return duration;
+        }
+        return duration;
+    }
 
-
-
-
+    public void setShowUserLoading(boolean showUserLoading) {
+        this.showUserLoading = showUserLoading;
+    }
 
 //      videoplayer.setShowPlayJustClick(true);
 //        videoplayer.setAspect(C.VERTICAL_ASPECT);
